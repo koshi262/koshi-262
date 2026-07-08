@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>koshiah </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.45)),
+        url("kosh.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:#fff;
+}
+
+/* Background */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background:
+
+radial-gradient(circle at 20% 20%,rgba(255,255,255,.2),transparent 40%),
+radial-gradient(circle at 80% 10%,rgba(255,255,255,.15),transparent 35%),
+radial-gradient(circle at 70% 80%,rgba(255,255,255,.15),transparent 30%);
+
+animation:move 18s linear infinite;
+
+z-index:-2;
+
+}
+
+@keyframes move{
+
+50%{
+transform:translateY(-40px);
+}
+
+}
+
+/* Floating Hearts */
+
+.hearts{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.heart{
+
+position:absolute;
+
+bottom:-30px;
+
+font-size:22px;
+
+animation:floatHeart linear forwards;
+
+opacity:.7;
+
+}
+
+@keyframes floatHeart{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg) scale(1.4);
+
+opacity:0;
+
+}
+
+}
+
+/* Card */
+
+.container{
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.3);
+
+padding:35px;
+
+border-radius:25px;
+
+max-width:420px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+animation:fade 1s ease;
+
+}
+
+.card h1{
+
+font-family:'Great Vibes',cursive;
+
+font-size:55px;
+
+color:white;
+
+margin-bottom:15px;
+
+}
+
+.card p{
+
+color:white;
+
+margin-bottom:25px;
+
+line-height:1.7;
+
+}
+
+button{
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:white;
+
+color:#73976A;
+
+font-weight:bold;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-5px);
+
+}
+
+/* Popup */
+
+.popup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.55);
+
+visibility:hidden;
+
+opacity:0;
+
+transition:.35s;
+
+padding:20px;
+
+}
+
+.popup.active{
+
+visibility:visible;
+
+opacity:1;
+
+}
+
+.popup-content{
+
+background:#FFFAF3;
+
+padding:35px;
+
+border-radius:25px;
+
+max-width:520px;
+
+width:100%;
+
+text-align:left;
+
+position:relative;
+
+animation:popup .5s ease;
+
+}
+
+@keyframes popup{
+
+from{
+
+transform:translateY(40px);
+
+opacity:0;
+
+}
+
+to{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+}
+
+.popup h2{
+
+font-family:'Great Vibes',cursive;
+
+font-size:48px;
+
+color:#73976A;
+
+margin-bottom:20px;
+
+}
+
+.popup p{
+
+line-height:1.9;
+
+color:#555;
+
+}
+
+.close{
+
+position:absolute;
+
+right:20px;
+
+top:15px;
+
+font-size:28px;
+
+cursor:pointer;
+
+color:#999;
+
+}
+
+.close:hover{
+
+color:#ff4f87;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.card{
+
+padding:25px;
+
+}
+
+.card h1{
+
+font-size:42px;
+
+}
+
+.popup-content{
+
+padding:25px;
+
+}
+
+.popup h2{
+
+font-size:40px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <audio id="song"> 
+    <source src="Rico Blanco - Balisong (Lyrics).mp3">
+</audio>
+    
+<script>
+    window.addEventListener('click', () => {
+        document.getElementById("song").play();
+    });
+</script>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Happy Monthsary 𖹭.ᐟ</h1>
+
+<p>
+
+"Loving you has been the most natural feelings that resides in my heart"
+
+</p>
+
+<button id="openBtn">
+
+Open My Letter 💌
+
+</button>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<span class="close" id="closeBtn">&times;</span>
+
+<h2>To my baby liah‹𝟹</h2>
+
+<p>
+
+Happy 1st (4th) Monthsary, Baby! I know our relationship isn't perfect, pero i do know na i didn't regret giving us a chance ‹𝟹
+
+<br>
+       
+<br>
+
+I just want to say thank you for everything, thank you for the efforts, for taking good care of me and for balancing your time just to spend time with me. Despite our schedule differences, you still show up for me. I hope you know how much your presence means to me baby. How grateful i am that life let me meet you. 
+
+<br>
+       
+<br>
+
+And also, I hope you realize how much I love you and how much I don't want na ma wala ka. I hope we can set aside our pride and egos when it comes to arguements, baby. Let's stay strong kasi i want you to be my last
+
+<br>
+       
+<br>
+
+I'm really proud sa'yo, baby—of every small and big wins. For as long as i exist. I will always remind you na you don't need to be strong always. You don't have to carry it alone, I will be here always for you, through ups and downs, lablab. Kung maging tired ka man, hurt or if ever you feel like mabigat. I'm right here lang, Always.
+
+<br>
+       
+<br>
+
+I lovee youu so muchh and always baby ko. Hindi ako magsasawa sabihin sa'yo pa ulit-ulit na mahal kita.
+
+<br>
+       
+<br>
+
+Because, <br>
+"Loving you has been the most natural feeling that my heart resides"
+
+<a href="https://heyzine.com/flip-book/85672c5931.html">
+<img src="Bubblebody Neue3.png" width="450"/>
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const popup=document.getElementById("popup");
+
+document.getElementById("openBtn").onclick=()=>{
+
+popup.classList.add("active");
+
+};
+
+document.getElementById("closeBtn").onclick=()=>{
+
+popup.classList.remove("active");
+
+};
+
+window.onclick=(e)=>{
+
+if(e.target===popup){
+
+popup.classList.remove("active");
+
+}
+
+};
+
+/* Floating Hearts */
+
+const hearts=document.getElementById("hearts");
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+hearts.appendChild(heart);
+
+setTimeout(()=>heart.remove(),10000);
+
+}
+
+setInterval(createHeart,350);
+
+</script>
+
+
+</body>
+</html>
